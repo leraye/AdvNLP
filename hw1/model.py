@@ -38,7 +38,9 @@ class RNNModel(nn.Module):
     def init_weights(self):
         initrange = 0.1
         self.encoder.weight.data.uniform_(-initrange, initrange)
+        self.encoder.weight.data[0,:] = 0
         self.decoder.weight.data.uniform_(-initrange, initrange)
+        self.decoder.weight.data[0,:] = 0
 
     def forward(self, input, target, hidden):
         emb = self.encoder(input)
