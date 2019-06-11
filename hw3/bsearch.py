@@ -26,7 +26,6 @@ class BeamSearchDecoder(object):
         path = []
         scores = torch.zeros(self.ntags)
         S = len(s)
-        
         for i in range(S):
             scores = scores + self.TMatrix[prev[-1],] + self.EMatrix[:,s[i].item()]
             if i == S - 1:
